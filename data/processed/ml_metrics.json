@@ -1,0 +1,24 @@
+{
+  "correlacion_capex_ytd_r": -0.938,
+  "correlacion_capex_ytd_p": 0.019,
+  "correlacion_n": 5,
+  "n_clusters": 3,
+  "cluster_profiles": {
+    "Zona neutral": {
+      "ytd_pct": -0.02,
+      "var_1d_pct": 5.63,
+      "market_cap_t": 3.83
+    },
+    "Bajo presion": {
+      "ytd_pct": -25.39,
+      "var_1d_pct": 1.01,
+      "market_cap_t": 1.31
+    },
+    "Momentum positivo": {
+      "ytd_pct": 23.93,
+      "var_1d_pct": -9.21,
+      "market_cap_t": 4.45
+    }
+  },
+  "pca_variance_explained": 0.961
+}

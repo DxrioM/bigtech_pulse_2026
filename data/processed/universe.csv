@@ -1,0 +1,18 @@
+ticker,nombre,precio,market_cap_t,var_1d_pct,ytd_pct,sector,pais,capex_ia_2026_b,capex_sobre_mcap_pct,categoria_rendimiento,es_magnificent7,ranking_market_cap,ranking_ytd
+NVDA,NVIDIA Corporation,197.95,4.79,1.47,5.37,Semiconductores,USA,,,Alza moderada,True,1,2
+AAPL,Apple Inc.,302.98,4.45,-9.21,23.93,Hardware de consumo,USA,13.5,0.3,Fuerte alza,True,2,1
+GOOGL,Alphabet Inc.,353.23,4.27,5.9,4.33,Software / Internet,USA,180.0,4.22,Alza moderada,True,3,3
+MSFT,Microsoft Corporation,451.28,3.35,0.08,-10.03,Software / Cloud,USA,190.0,5.67,Baja moderada,True,4,5
+AMZN,"Amazon.com, Inc.",271.1,2.92,15.06,0.25,E-commerce / Cloud,USA,200.0,6.85,Alza moderada,True,5,4
+AVGO,Broadcom Inc.,,1.648,,,Semiconductores,USA,,,,False,6,
+META,"Meta Platforms, Inc.",551.79,1.4,2.31,-19.54,Software / Internet,USA,125.0,8.93,Fuerte baja,True,7,6
+TSM,Taiwan Semiconductor Mfg.,,1.312,,,Semiconductores,Taiwan,,,,False,8,
+TSLA,"Tesla, Inc.",308.11,1.22,-0.29,-31.24,Automotriz / Energia,USA,,,Fuerte baja,True,9,7
+005930.KS,Samsung Electronics,,0.596,,,Electronica de consumo,Corea del Sur,,,,False,10,
+ORCL,Oracle Corporation,,0.562,,,Software / Infraestructura,USA,,,,False,11,
+ASML,ASML Holding N.V.,,0.45,,,Equipos de semiconductores,Paises Bajos,,,,False,12,
+PLTR,Palantir Technologies,,0.4,,,Software / Infraestructura,USA,,,,False,13,
+AMD,Advanced Micro Devices,,0.364,,,Semiconductores,USA,,,,False,14,
+MU,Micron Technology,,0.355,,,Semiconductores,USA,,,,False,15,
+CSCO,Cisco Systems,,0.3,,,Equipos de comunicacion,USA,,,,False,16,
+INTC,Intel Corporation,,0.188,,,Semiconductores,USA,,,,False,17,

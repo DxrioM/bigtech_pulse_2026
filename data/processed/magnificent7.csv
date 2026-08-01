@@ -1,0 +1,8 @@
+ticker,nombre,precio,market_cap_t,var_1d_pct,ytd_pct,sector,pais,capex_ia_2026_b,es_magnificent7,capex_sobre_mcap_pct,categoria_rendimiento,ranking_market_cap,ranking_ytd,cluster,cluster_name,pca_x,pca_y,score_ytd,score_1d,score_mcap,score_eficiencia_capex,momentum_score,momentum_rank
+AAPL,Apple Inc.,302.98,4.45,-9.21,23.93,Hardware de consumo,USA,13.5,True,0.3,Fuerte alza,2,1,2,Momentum positivo,2.214,-1.153,0.9999999999818743,0.0,0.90476190450847,0.9664053751399776,82.73156294531083,1
+GOOGL,Alphabet Inc.,353.23,4.27,5.9,4.33,Software / Internet,USA,180.0,True,4.22,Alza moderada,3,3,0,Zona neutral,0.732,0.776,0.6447344571208132,0.6225793160023659,0.8543417364553664,0.5274356103023516,64.35275661486138,2
+NVDA,NVIDIA Corporation,197.95,4.79,1.47,5.37,Semiconductores,USA,,True,,Alza moderada,1,2,0,Zona neutral,1.212,0.237,0.6635852818440532,0.44004944373959415,0.999999999719888,0.5,63.96207933487462,3
+AMZN,"Amazon.com, Inc.",271.1,2.92,15.06,0.25,E-commerce / Cloud,USA,200.0,True,6.85,Alza moderada,5,4,0,Zona neutral,-0.48,1.831,0.5707812216681025,0.9999999999587968,0.4761904760570894,0.23292273236282202,53.651080424373454,4
+MSFT,Microsoft Corporation,451.28,3.35,0.08,-10.03,Software / Cloud,USA,190.0,True,5.67,Baja moderada,4,5,0,Zona neutral,-0.093,-0.339,0.38444806959607675,0.38277709104314883,0.5966386552950591,0.3650615901455767,41.11793908053599,5
+TSLA,"Tesla, Inc.",308.11,1.22,-0.29,-31.24,Automotriz / Energia,USA,,True,,Fuerte baja,7,7,1,Bajo presion,-2.025,-0.934,0.0,0.367531932411721,0.0,0.5,18.012978986175813,6
+META,"Meta Platforms, Inc.",551.79,1.4,2.31,-19.54,Software / Internet,USA,125.0,True,8.93,Fuerte baja,6,6,1,Bajo presion,-1.559,-0.419,0.21207177813644967,0.4746600741460791,0.05042016805310357,0.0,17.419433649127974,7
