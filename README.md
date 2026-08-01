@@ -2,7 +2,9 @@
 
 Análisis del "Magnificent 7" (Apple, Microsoft, Alphabet, Amazon, Nvidia, Meta, Tesla) con SQL, Python y Machine Learning — precio, market cap, gasto en IA, y un dashboard interactivo con cross-filtering real, en un diseño minimalista inspirado en Apple.
 
-**🔴 Demo:** [docs/index.html](docs/index.html)
+**🔴 Demo:** [Español](https://dxriom.github.io/bigtech_pulse_2026/) · [English](https://dxriom.github.io/bigtech_pulse_2026/dashboard_en.html)
+
+**📁 Repositorio:** [github.com/DxrioM/bigtech_pulse_2026](https://github.com/DxrioM/bigtech_pulse_2026)
 
 ---
 
@@ -45,11 +47,14 @@ bigtech_portfolio/
 │   ├── 02_load_db.py                 # carga a SQLite
 │   ├── 03_run_eda.py                 # ejecuta las queries SQL → JSON
 │   ├── 04_ml_analysis.py             # correlación, KMeans, Momentum Score
-│   └── 05_build_dashboard.py         # inyecta datos + Chart.js en la plantilla
+│   ├── 07_translate_exports.py       # genera las etiquetas categóricas en inglés
+│   └── 08_build_dashboards.py        # inyecta datos + Chart.js en las plantillas ES/EN
 ├── lib/
 │   ├── chart.umd.min.js
-│   └── dashboard_template.html
-├── docs/index.html                   # ⭐ producto final
+│   └── dashboard_template_i18n.html  # plantilla bilingüe (i18n vía data-i18n)
+├── docs/
+│   ├── index.html                    # ⭐ producto final en Español
+│   └── dashboard_en.html             # ⭐ producto final en Inglés
 └── README.md
 ```
 
@@ -62,8 +67,9 @@ python3 01_clean_transform.py
 python3 02_load_db.py
 python3 03_run_eda.py
 python3 04_ml_analysis.py
-python3 05_build_dashboard.py
-cp ../outputs/index.html ../docs/
+python3 07_translate_exports.py
+python3 08_build_dashboards.py
+cp ../outputs/*.html ../docs/
 ```
 
 ## Metodología del Momentum Score
