@@ -83,7 +83,8 @@ def build_svg(lang):
         badge_eyebrow = "EL HALLAZGO CENTRAL"
         badge_big = "r = −0.94"
         badge_label = "Capex en IA vs. rendimiento YTD"
-        badge_desc = "Apple gasta menos en IA (0.3% de su valor) y es la única con alza fuerte (+23.9%). Meta gasta más (8.9%) y tiene el peor año (−19.5%). n=5 · p<0.05, muestra pequeña."
+        badge_desc = "Apple gasta menos en IA (0.3% de su valor) y es la única con alza fuerte (+23.9%). Meta gasta más (8.9%) y tiene el peor año (−19.5%)."
+        badge_note = "n=5 · p<0.05 · muestra pequeña"
         col1_title, col1_items = "METODOLOGÍA", ["Extracción cruzada de 8+ fuentes", "SQL: esquema + 6 queries EDA", "Machine Learning: KMeans, PCA"]
         col2_title, col2_items = "PANORAMA GLOBAL", ["17 empresas · 4 países", "10 sectores tecnológicos", "No es solo una historia de EE.UU."]
         col3_title, col3_items = "DESTACADOS", ["Correlación validada con SciPy", "Cross-filtering interactivo real", "Diseño minimalista tipo Apple"]
@@ -105,7 +106,8 @@ def build_svg(lang):
         badge_eyebrow = "THE CORE FINDING"
         badge_big = "r = −0.94"
         badge_label = "AI capex vs. YTD performance"
-        badge_desc = "Apple spends the least on AI (0.3% of its value) and is the only one with a strong gain (+23.9%). Meta spends the most (8.9%) and has the worst year (−19.5%). n=5 · p<0.05, small sample."
+        badge_desc = "Apple spends the least on AI (0.3% of its value) and is the only one with a strong gain (+23.9%). Meta spends the most (8.9%) and has the worst year (−19.5%)."
+        badge_note = "n=5 · p<0.05 · small sample"
         col1_title, col1_items = "METHODOLOGY", ["Cross-checked across 8+ sources", "SQL: schema + 6 EDA queries", "Machine Learning: KMeans, PCA"]
         col2_title, col2_items = "GLOBAL LANDSCAPE", ["17 companies · 4 countries", "10 tech sectors", "Not just a U.S. story"]
         col3_title, col3_items = "HIGHLIGHTS", ["Correlation validated with SciPy", "Real interactive cross-filtering", "Apple-style minimalist design"]
@@ -159,18 +161,24 @@ def build_svg(lang):
     sub_lines2, _ = wrap_tspans(kpi2_sub, kx2+18, 30, 10.5)
     svg_parts.append(f'<text x="{kx2+18}" y="{y+126}" font-family="DejaVu Sans" font-size="10.5" fill="{P["text3"]}">{sub_lines2}</text>')
 
-    # Card 3: capex IA (mini stacked bar por empresa)
+    # Card 3: capex IA (mini stacked bar + leyenda compacta de las 5 empresas)
     kx3 = kx2 + kpi_w + 16
     svg_parts.append(f'<rect x="{kx3}" y="{y}" width="{kpi_w}" height="{kpi_h}" rx="14" fill="{P["card"]}" stroke="{P["border"]}"/>')
-    svg_parts.append(f'<text x="{kx3+18}" y="{y+56}" font-family="DejaVu Sans Mono" font-size="32" font-weight="bold" fill="{P["text"]}">{kpi3_num}</text>')
-    lbl_lines3, _ = wrap_tspans(kpi3_lbl, kx3+18, 22, 11)
-    svg_parts.append(f'<text x="{kx3+18}" y="{y+76}" font-family="DejaVu Sans" font-size="11" font-weight="bold" letter-spacing="0.5" fill="{P["text2"]}">{lbl_lines3}</text>')
+    svg_parts.append(f'<text x="{kx3+18}" y="{y+50}" font-family="DejaVu Sans Mono" font-size="28" font-weight="bold" fill="{P["text"]}">{kpi3_num}</text>')
+    lbl_lines3, _ = wrap_tspans(kpi3_lbl, kx3+18, 24, 11)
+    svg_parts.append(f'<text x="{kx3+18}" y="{y+68}" font-family="DejaVu Sans" font-size="11" font-weight="bold" letter-spacing="0.5" fill="{P["text2"]}">{lbl_lines3}</text>')
     capex_companies = sorted([c for c in data if c.get("capex_ia_2026_b")], key=lambda c: -c["capex_ia_2026_b"])
     capex_colors = [P["blue"], P["green"], P["amber"], P["red"], P["text3"]]
     capex_segments = [(c["capex_ia_2026_b"], capex_colors[i % len(capex_colors)]) for i, c in enumerate(capex_companies)]
-    svg_parts.append(mini_stacked_bar(kx3+18, y+100, kpi_w-36, 8, capex_segments))
-    sub_lines3, _ = wrap_tspans(kpi3_sub, kx3+18, 30, 10.5)
-    svg_parts.append(f'<text x="{kx3+18}" y="{y+126}" font-family="DejaVu Sans" font-size="10.5" fill="{P["text3"]}">{sub_lines3}</text>')
+    svg_parts.append(mini_stacked_bar(kx3+18, y+80, kpi_w-36, 7, capex_segments))
+    # leyenda: 5 empresas en 2 columnas (ticker + monto), con el punto de color correspondiente
+    leg_col_w = (kpi_w - 36) / 2
+    for i, c in enumerate(capex_companies):
+        row, col = divmod(i, 2)
+        lx = kx3 + 18 + col * leg_col_w
+        ly = y + 100 + row * 15
+        svg_parts.append(f'<circle cx="{lx+3}" cy="{ly-3}" r="3" fill="{capex_colors[i % len(capex_colors)]}"/>')
+        svg_parts.append(f'<text x="{lx+12}" y="{ly}" font-family="DejaVu Sans Mono" font-size="9.5" fill="{P["text2"]}">{esc(c["ticker"])} ${c["capex_ia_2026_b"]:.0f}B</text>')
 
     # Card 4: mejor vs peor YTD (mini dual bar)
     kx4 = kx3 + kpi_w + 16
@@ -223,12 +231,17 @@ def build_svg(lang):
     svg_parts.append(f'<text x="102" y="{y+114}" font-family="DejaVu Sans" font-size="13.5" fill="{P["text2"]}">{badge_label}</text>')
     # divisor vertical
     svg_parts.append(f'<line x1="{70+left_w}" y1="{y+22}" x2="{70+left_w}" y2="{y+badge_h-22}" stroke="{P["border"]}" stroke-width="1"/>')
-    # columna derecha: descripcion
+    # columna derecha: descripcion (calculo de ancho conservador para evitar desborde:
+    # 9.2px/caracter a font-size 15 en DejaVu Sans, en vez del estimado optimista anterior)
     right_x = 70 + left_w + 30
-    right_w_chars = int((table_w - left_w - 60) / 6.8)
+    right_padding = 34
+    available_px = table_w - left_w - 30 - right_padding
+    right_w_chars = int(available_px / 9.2)
     desc_lines, ndesc = wrap_tspans(badge_desc, right_x, right_w_chars, 15)
-    desc_y = y + badge_h/2 - (ndesc-1)*15*1.35/2 + 5
+    desc_y = y + badge_h/2 - (ndesc-1)*15*1.35/2 - 4
     svg_parts.append(f'<text x="{right_x}" y="{desc_y}" font-family="DejaVu Sans" font-size="15" fill="{P["text2"]}">{desc_lines}</text>')
+    note_y = desc_y + (ndesc-1)*15*1.35 + 26
+    svg_parts.append(f'<text x="{right_x}" y="{note_y}" font-family="DejaVu Sans Mono" font-size="11.5" fill="{P["text3"]}">{esc(badge_note)}</text>')
     y += badge_h + 40
 
     # ============ FOOTER: 3 COLUMNAS PAREJAS ============
