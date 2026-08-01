@@ -1,5 +1,7 @@
 # 📈 Big Tech Pulse — Portafolio de Data Science de Mercados
 
+**🌐 [Read this in English](README.en.md)**
+
 Análisis del "Magnificent 7" (Apple, Microsoft, Alphabet, Amazon, Nvidia, Meta, Tesla) con SQL, Python y Machine Learning — precio, market cap, gasto en IA, y un dashboard interactivo con cross-filtering real, en un diseño minimalista inspirado en Apple.
 
 **🔴 Demo:** [Español](https://dxriom.github.io/bigtech_pulse_2026/) · [English](https://dxriom.github.io/bigtech_pulse_2026/dashboard_en.html)
